@@ -5,146 +5,230 @@
   <title>Butian Zhang | Knot Theory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Personal website of Butian Zhang, a mathematics PhD student in knot theory at Université de Toulouse." />
-
-  <!-- 字体 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- MathJax 支持 LaTeX 公式 -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script async
-    id="MathJax-script"
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
-
+  <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <style>
-    :root {
-      --bg: #f7f7fb;
-      --fg: #111827;
-      --accent: #2563eb;
-      --accent-soft: #dbeafe;
-      --card-bg: #ffffff;
-      --border: #e5e7eb;
-      --muted: #6b7280;
-      --radius-xl: 18px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
-    }
+    :root { --bg: #f7f7fb; --fg: #111827; --accent: #2563eb; --accent-soft: #dbeafe; --card-bg: #ffffff; --border: #e5e7eb; --muted: #6b7280; --radius-xl: 18px; --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);}
+    * {box-sizing: border-box;margin:0;padding:0;}
+    body {font-family: "Inter",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background: radial-gradient(circle at top left,#e0f2fe 0,#f7f7fb 45%,#ffffff 100%);color:var(--fg);line-height:1.6;}
+    a {color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+    .page {max-width:960px;margin:0 auto;padding:20px 16px 64px;}
+    header {display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;margin:12px 0 28px;background:rgba(255,255,255,0.9);border-radius:999px;border:1px solid rgba(148,163,184,0.3);backdrop-filter:blur(10px);position:sticky;top:12px;z-index:10;}
+    .brand {font-weight:600;letter-spacing:0.04em;text-transform:uppercase;font-size:14px;display:flex;align-items:center;gap:8px;}
+    .brand-dot{width:18px;height:18px;border-radius:999px;background:conic-gradient(from 120deg,#1d4ed8,#22c55e,#ec4899,#1d4ed8);padding:2px;}
+    .brand-dot-inner{width:100%;height:100%;background:#eef2ff;border-radius:inherit;}
+    nav{display:flex;gap:16px;font-size:14px;flex-wrap:wrap;}
+    nav a{padding:6px 12px;border-radius:999px;border:1px solid transparent;}
+    nav a:hover{border-color:rgba(148,163,184,0.6);text-decoration:none;background:rgba(255,255,255,0.9);}
+    .hero{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1.4fr);gap:32px;align-items:center;margin-bottom:40px;}
+    @media (max-width:800px){.hero{grid-template-columns:minmax(0,1fr);}header{border-radius:16px;}}
+    .hero-main{background:rgba(255,255,255,0.92);border-radius:28px;padding:28px 26px;box-shadow:var(--shadow-soft);border:1px solid var(--border);}
+    .hero-kicker{font-size:13px;text-transform:uppercase;letter-spacing:0.14em;color:var(--muted);margin-bottom:8px;}
+    .hero-title{font-size:30px;line-height:1.2;margin-bottom:8px;}
+    .hero-subtitle{font-size:16px;color:var(--muted);margin-bottom:18px;}
+    .hero-highlight{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:var(--accent-soft);font-size:13px;margin-bottom:16px;}
+    .hero-highlight .tag{padding:3px 8px;border-radius:999px;background:white;border:1px solid #bfdbfe;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#1d4ed8;font-weight:600;}
+    .hero-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:8px 16px;border-radius:999px;font-size:14px;border:1px solid transparent;cursor:pointer;text-decoration:none;white-space:nowrap;}
+    .btn-primary{background:var(--accent);color:white;box-shadow:0 12px 24px rgba(37,99,235,0.4);}
+    .btn-primary:hover{filter:brightness(1.03);text-decoration:none;}
+    .btn-ghost{border-color:var(--border);background:rgba(255,255,255,0.9);color:var(--fg);}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;font-size:13px;color:var(--muted);}
+    .hero-meta .label{font-weight:600;color:#374151;}
+    .hero-side{display:flex;flex-direction:column;gap:12px;}
+    .card{background:rgba(255,255,255,0.95);border-radius:var(--radius-xl);padding:16px 18px;border:1px solid var(--border);box-shadow:0 10px 26px rgba(15,23,42,0.08);font-size:14px;}
+    .card-title{font-weight:600;font-size:14px;margin-bottom:6px;}
+    .tagline-small{font-size:13px;color:var(--muted);}
+    .knot-sketch{margin-top:8px;font-size:11px;font-family:"JetBrains Mono",monospace;color:#4b5563;background:radial-gradient(circle at top,#eef2ff 0,#ffffff 50%);border-radius:12px;padding:10px 12px;border:1px dashed #c7d2fe;white-space:pre;overflow-x:auto;}
+    main{display:flex;flex-direction:column;gap:26px;}
+    section{background:rgba(255,255,255,0.96);border-radius:24px;padding:20px 22px;border:1px solid var(--border);box-shadow:0 14px 32px rgba(15,23,42,0.06);}
+    section+section{margin-top:4px;}
+    section h2{font-size:18px;margin-bottom:8px;}
+    section .section-subtitle{font-size:13px;color:var(--muted);margin-bottom:12px;}
+    .two-col{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.1fr);gap:16px 24px;}
+    @media(max-width:800px){.two-col{grid-template-columns:minmax(0,1fr);}}
+    ul.pub-list,ul.notes-list,ul.projects-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px;}
+    .pub-item-title{font-weight:500;}
+    .pub-meta{font-size:12px;color:var(--muted);}
+    .pill{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:999px;border:1px solid #e5e7eb;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#4b5563;margin-right:4px;}
+    footer{text-align:center;font-size:12px;color:var(--muted);margin-top:28px;padding-top:16px;}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <span class="brand-dot"><span class="brand-dot-inner"></span></span>
+        <span>ZBT99 · Knot Theory</span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#notes">Notes</a>
+        <a href="#projects">Code</a>
+        <a href="#cv">CV</a>
+      </nav>
+    </header>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <div class="hero">
+      <div class="hero-main" id="about">
+        <div class="hero-kicker">Math PhD · Knot Theory</div>
+        <h1 class="hero-title">张卜天 / Butian Zhang</h1>
+        <p class="hero-subtitle">
+          PhD student in mathematics at Université de Toulouse, working on knot theory and finite-type invariants.
+          Advisor: Thomas Fiedler · Co-advisor: Stepan Orevkov.
+        </p>
 
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, #e0f2fe 0, #f7f7fb 45%, #ffffff 100%);
-      color: var(--fg);
-      line-height: 1.6;
-    }
+        <div class="hero-highlight">
+          <span class="tag">Research focus</span>
+          <span>knot theory, Vassiliev invariants, quantum topology</span>
+        </div>
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+        <p style="font-size:14px; color:#4b5563;">
+          I am interested in Gauss diagram formulae, Vassiliev invariants, combinatorial structures in moduli spaces of knots, and quantum-type knot equations.
+        </p>
 
-    a:hover {
-      text-decoration: underline;
-    }
+        <div class="hero-links">
+          <a class="btn btn-primary" href="#research">View research</a>
+          <a class="btn btn-ghost" href="https://github.com/ZBT99" target="_blank" rel="noopener">GitHub @ZBT99</a>
+        </div>
 
-    .page {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 20px 16px 64px;
-    }
+        <div class="hero-meta">
+          <div><span class="label">Email:</span> <a href="mailto:butian.zhang@math.univ-toulouse.fr">butian.zhang@math.univ-toulouse.fr</a></div>
+          <div><span class="label">Office:</span> 103 1R2 IMT Université Paul Sabatier</div>
+          <div><span class="label">Affiliation:</span> Université de Toulouse</div>
+        </div>
+      </div>
 
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 18px 22px;
-      margin: 12px 0 28px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 12px;
-      z-index: 10;
-    }
+      <aside class="hero-side">
+        <div class="card">
+          <div class="card-title">Current interests</div>
+          <p class="tagline-small">
+            Vassiliev invariants, Gauss diagram formulae, combinatorial one-cocycles in knot moduli spaces, quantum equations for knots.
+          </p>
+          <div class="knot-sketch">
+(trefoil)
+ \  / /
+  \/ /
+  /\ \
+ /  \_\
+          </div>
+        </div>
 
-    .brand {
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        <div class="card">
+          <div class="card-title">News</div>
+          <ul style="list-style:none;padding-left:0;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:4px;">
+            <li><span class="pill">2025</span> Preprint “Quantum equations for knots” (with Thomas Fiedler), arXiv:2509.08423.</li>
+            <li><span class="pill">2022</span> Preprint “A combinatorial one-cocycle...” (with Baptiste Gros), arXiv:2212.03778.</li>
+            <li><span class="pill">2023</span> Paper published in JKTR.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
 
-    .brand-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: conic-gradient(from 120deg, #1d4ed8, #22c55e, #ec4899, #1d4ed8);
-      padding: 2px;
-    }
+    <main>
+      <section id="research">
+        <h2>Research & Publications</h2>
+        <p class="section-subtitle">Publications and preprints on knot theory, Vassiliev invariants, and quantum invariants.</p>
 
-    .brand-dot-inner {
-      width: 100%;
-      height: 100%;
-      background: #eef2ff;
-      border-radius: inherit;
-    }
+        <div class="two-col">
+          <div>
+            <h3 style="font-size:15px;margin-bottom:6px;">Publications</h3>
+            <ul class="pub-list">
+              <li>
+                <div class="pub-item-title">Gauss diagram formulae for Vassiliev invariants from Kauffman polynomial.</div>
+                <div class="pub-meta">
+                  Journal of Knot Theory and Its Ramifications, 32(12), 2350084 (2023).<br/>
+                  <a href="https://doi.org/10.1142/S0218216523500840" target="_blank">DOI: 10.1142/S0218216523500840</a>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-    nav {
-      display: flex;
-      gap: 16px;
-      font-size: 14px;
-      flex-wrap: wrap;
-    }
+          <div>
+            <h3 style="font-size:15px;margin-bottom:6px;">Preprints</h3>
+            <ul class="pub-list">
+              <li>
+                <div class="pub-item-title">A combinatorial one-cocycle in a moduli space of knots from the Vassiliev invariant of order 3.</div>
+                <div class="pub-meta">
+                  Joint with Baptiste Gros, preprint (2022).<br/>
+                  <a href="https://arxiv.org/abs/2212.03778" target="_blank">arXiv:2212.03778</a>
+                </div>
+              </li>
 
-    nav a {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-    }
+              <li>
+                <div class="pub-item-title">Quantum equations for knots.</div>
+                <div class="pub-meta">
+                  Joint with Thomas Fiedler, preprint (2025).<br/>
+                  <a href="https://arxiv.org/abs/2509.08423" target="_blank">arXiv:2509.08423</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-    nav a:hover {
-      border-color: rgba(148, 163, 184, 0.6);
-      text-decoration: none;
-      background: rgba(255, 255, 255, 0.9);
-    }
+      <section id="notes">
+        <h2>Notes & Teaching</h2>
+        <p class="section-subtitle">Some notes and expository materials.</p>
 
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-      gap: 32px;
-      align-items: center;
-      margin-bottom: 40px;
-    }
+        <ul class="notes-list">
+          <li>
+            <div>
+              <strong>Finite-type invariants and Gauss diagram formulae</strong>
+              <div class="note-meta">Draft notes, 2024–.</div>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Seminar / Course materials</strong>
+              <div class="note-meta">To be added.</div>
+            </div>
+          </li>
+        </ul>
+      </section>
 
-    @media (max-width: 800px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      header {
-        border-radius: 16px;
-      }
-    }
+      <section id="projects">
+        <h2>Code & Projects</h2>
+        <p class="section-subtitle">
+          More projects on <a href="https://github.com/ZBT99" target="_blank">GitHub @ZBT99</a>.
+        </p>
 
-    .hero-main {
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 28px;
-      padding: 28px 26px;
-      box-shadow: var(--shadow-soft);
-      border:
+        <ul class="projects-list">
+          <li>
+            <div>
+              <strong>[Project title]</strong>
+              <div class="proj-meta">To be added.</div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="cv">
+        <h2>CV</h2>
+        <p class="section-subtitle">Download my CV (PDF).</p>
+        <p style="font-size:14px;">
+          <a class="btn btn-ghost" href="cv.pdf" target="_blank">Download CV (PDF)</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Butian Zhang · Built with GitHub Pages.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
