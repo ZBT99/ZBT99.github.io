@@ -1,234 +1,196 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Butian Zhang | Knot Theory</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Personal website of Butian Zhang, a mathematics PhD student in knot theory at Université de Toulouse." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Butian Zhang (张卜天) is a mathematician working in low-dimensional topology, knot theory, and combinatorial 1-cocycles in knot spaces. Research, publications, personal notes, talks, and code.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Butian Zhang">
+  <meta name="google-site-verification" content="N0gdF9gMmJemkSyHroa3WZfaxyNTCt2lIQ91NriXi1w">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Butian Zhang (张卜天) · Mathematics">
+  <meta property="og:description" content="Knot theory, combinatorial 1-cocycles, and the topology of knot spaces.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zbt99.github.io/">
+  <meta property="og:image" content="https://zbt99.github.io/assets/portrait-4x3.jpg">
+  <meta property="og:image:alt" content="Butian Zhang">
+  <title>Butian Zhang (张卜天) · Mathematics</title>
+  <link rel="canonical" href="https://zbt99.github.io/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2323486b'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='23' fill='white'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=20261008-12">
+  <script src="notes.js?v=20261008-11" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://zbt99.github.io/#profile",
+  "url": "https://zbt99.github.io/",
+  "name": "Butian Zhang (张卜天) · Mathematics",
+  "dateModified": "2026-10-08",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://zbt99.github.io/#person",
+    "name": "Butian Zhang",
+    "alternateName": "张卜天",
+    "url": "https://zbt99.github.io/",
+    "image": "https://zbt99.github.io/assets/portrait-4x3.jpg",
+    "description": "Mathematician working in low-dimensional topology, knot theory, and combinatorial methods in knot spaces.",
+    "sameAs": [
+      "https://github.com/ZBT99"
+    ],
+    "knowsAbout": [
+      "Low-dimensional topology",
+      "Knot theory",
+      "Embedding spaces",
+      "Computational knot theory",
+      "Gauss diagrams",
+      "Vassiliev invariants",
+      "Khovanov homology"
+    ]
+  }
+}
   </script>
-  <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <style>
-    :root { --bg: #f7f7fb; --fg: #111827; --accent: #2563eb; --accent-soft: #dbeafe; --card-bg: #ffffff; --border: #e5e7eb; --muted: #6b7280; --radius-xl: 18px; --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);}
-    * {box-sizing: border-box;margin:0;padding:0;}
-    body {font-family: "Inter",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background: radial-gradient(circle at top left,#e0f2fe 0,#f7f7fb 45%,#ffffff 100%);color:var(--fg);line-height:1.6;}
-    a {color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
-    .page {max-width:960px;margin:0 auto;padding:20px 16px 64px;}
-    header {display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;margin:12px 0 28px;background:rgba(255,255,255,0.9);border-radius:999px;border:1px solid rgba(148,163,184,0.3);backdrop-filter:blur(10px);position:sticky;top:12px;z-index:10;}
-    .brand {font-weight:600;letter-spacing:0.04em;text-transform:uppercase;font-size:14px;display:flex;align-items:center;gap:8px;}
-    .brand-dot{width:18px;height:18px;border-radius:999px;background:conic-gradient(from 120deg,#1d4ed8,#22c55e,#ec4899,#1d4ed8);padding:2px;}
-    .brand-dot-inner{width:100%;height:100%;background:#eef2ff;border-radius:inherit;}
-    nav{display:flex;gap:16px;font-size:14px;flex-wrap:wrap;}
-    nav a{padding:6px 12px;border-radius:999px;border:1px solid transparent;}
-    nav a:hover{border-color:rgba(148,163,184,0.6);text-decoration:none;background:rgba(255,255,255,0.9);}
-    .hero{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1.4fr);gap:32px;align-items:center;margin-bottom:40px;}
-    @media (max-width:800px){.hero{grid-template-columns:minmax(0,1fr);}header{border-radius:16px;}}
-    .hero-main{background:rgba(255,255,255,0.92);border-radius:28px;padding:28px 26px;box-shadow:var(--shadow-soft);border:1px solid var(--border);}
-    .hero-kicker{font-size:13px;text-transform:uppercase;letter-spacing:0.14em;color:var(--muted);margin-bottom:8px;}
-    .hero-title{font-size:30px;line-height:1.2;margin-bottom:8px;}
-    .hero-subtitle{font-size:16px;color:var(--muted);margin-bottom:18px;}
-    .hero-highlight{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:var(--accent-soft);font-size:13px;margin-bottom:16px;}
-    .hero-highlight .tag{padding:3px 8px;border-radius:999px;background:white;border:1px solid #bfdbfe;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#1d4ed8;font-weight:600;}
-    .hero-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:8px 16px;border-radius:999px;font-size:14px;border:1px solid transparent;cursor:pointer;text-decoration:none;white-space:nowrap;}
-    .btn-primary{background:var(--accent);color:white;box-shadow:0 12px 24px rgba(37,99,235,0.4);}
-    .btn-primary:hover{filter:brightness(1.03);text-decoration:none;}
-    .btn-ghost{border-color:var(--border);background:rgba(255,255,255,0.9);color:var(--fg);}
-    .hero-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;font-size:13px;color:var(--muted);}
-    .hero-meta .label{font-weight:600;color:#374151;}
-    .hero-side{display:flex;flex-direction:column;gap:12px;}
-    .card{background:rgba(255,255,255,0.95);border-radius:var(--radius-xl);padding:16px 18px;border:1px solid var(--border);box-shadow:0 10px 26px rgba(15,23,42,0.08);font-size:14px;}
-    .card-title{font-weight:600;font-size:14px;margin-bottom:6px;}
-    .tagline-small{font-size:13px;color:var(--muted);}
-    .knot-sketch{margin-top:8px;font-size:11px;font-family:"JetBrains Mono",monospace;color:#4b5563;background:radial-gradient(circle at top,#eef2ff 0,#ffffff 50%);border-radius:12px;padding:10px 12px;border:1px dashed #c7d2fe;white-space:pre;overflow-x:auto;}
-    main{display:flex;flex-direction:column;gap:26px;}
-    section{background:rgba(255,255,255,0.96);border-radius:24px;padding:20px 22px;border:1px solid var(--border);box-shadow:0 14px 32px rgba(15,23,42,0.06);}
-    section+section{margin-top:4px;}
-    section h2{font-size:18px;margin-bottom:8px;}
-    section .section-subtitle{font-size:13px;color:var(--muted);margin-bottom:12px;}
-    .two-col{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.1fr);gap:16px 24px;}
-    @media(max-width:800px){.two-col{grid-template-columns:minmax(0,1fr);}}
-    ul.pub-list,ul.notes-list,ul.projects-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px;}
-    .pub-item-title{font-weight:500;}
-    .pub-meta{font-size:12px;color:var(--muted);}
-    .pill{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:999px;border:1px solid #e5e7eb;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#4b5563;margin-right:4px;}
-    footer{text-align:center;font-size:12px;color:var(--muted);margin-top:28px;padding-top:16px;}
-  </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <span class="brand-dot"><span class="brand-dot-inner"></span></span>
-        <span>ZBT99 · Knot Theory</span>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#about">Butian Zhang</a>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#papers">Papers</a>
+      <a href="#notes">Notes</a>
+      <a href="#talks">Talks</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#code">Code</a>
+      <a href="cv.pdf" target="_blank" rel="noopener">CV</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap page-layout">
+    <header class="profile profile-header" aria-labelledby="name">
+      <div class="profile-titles">
+      <h1 id="name" class="profile-name">Butian Zhang</h1>
+      <p class="profile-name chinese-name" lang="zh-Hans">张卜天</p>
       </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#notes">Notes</a>
-        <a href="#projects">Code</a>
-        <a href="#cv">CV</a>
-      </nav>
+      <figure class="portrait" aria-label="Portrait of Butian Zhang">
+        <img class="portrait-photo" src="assets/portrait-4x3.jpg?v=20261008-12" alt="Butian Zhang" width="1540" height="1155">
+      </figure>
     </header>
 
-    <div class="hero">
-      <div class="hero-main" id="about">
-        <div class="hero-kicker">Math PhD · Knot Theory</div>
-        <h1 class="hero-title">张卜天 / Butian Zhang</h1>
-        <p class="hero-subtitle">
-          PhD student in mathematics at Université de Toulouse, working on knot theory and finite-type invariants.
-          Advisor: Thomas Fiedler · Co-advisor: Stepan Orevkov.
-        </p>
-
-        <div class="hero-highlight">
-          <span class="tag">Research focus</span>
-          <span>knot theory, Vassiliev invariants, quantum topology</span>
-        </div>
-
-        <p style="font-size:14px; color:#4b5563;">
-          I am interested in Gauss diagram formulae, Vassiliev invariants, combinatorial structures in moduli spaces of knots, and quantum-type knot equations.
-        </p>
-
-        <div class="hero-links">
-          <a class="btn btn-primary" href="#research">View research</a>
-          <a class="btn btn-ghost" href="https://github.com/ZBT99" target="_blank" rel="noopener">GitHub @ZBT99</a>
-        </div>
-
-        <div class="hero-meta">
-          <div><span class="label">Email:</span> <a href="mailto:butian.zhang@math.univ-toulouse.fr">butian.zhang@math.univ-toulouse.fr</a></div>
-          <div><span class="label">Office:</span> 103 1R2 IMT Université Paul Sabatier</div>
-          <div><span class="label">Affiliation:</span> Université de Toulouse</div>
-        </div>
+    <div class="main-column">
+    <section id="about" class="intro" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <p class="lead">I received my Ph.D. in Mathematics from Université de Toulouse in 2025, supervised by Professor Thomas Fiedler and Professor Stepan Orevkov.</p>
+      <p class="thesis-link">Ph.D. thesis: <a href="https://utheme.utoulouse.fr/s/fr/item/45990" target="_blank" rel="noopener"><cite>Combinatorial 1-Cocycles of String Links Using Gauss Diagrams</cite></a>.</p>
+      <div class="contact" aria-labelledby="contact-heading">
+        <h3 id="contact-heading">Contact</h3>
+        <div class="contact-details"><span class="contact-email">butian.zhang.math [at] gmail [dot] com</span><a href="https://github.com/ZBT99" target="_blank" rel="noopener">GitHub: @ZBT99</a></div>
       </div>
+      <p class="research-overview">I work in low-dimensional topology. I am interested in knots, the embedding space of (long) knots and computational knot theory. I study knots from a combinatorial perspective, using tools such as Gauss diagrams, Vassiliev invariants, knot polynomials, and Khovanov homology. A central theme of my research is to understand the topology, especially the homotopy information, of embedding spaces using combinatorial tools. I construct explicit formulae for 0-cocycles and 1-cocycles in the space of (long) knots and study their properties.</p>
+    </section>
 
-      <aside class="hero-side">
-        <div class="card">
-          <div class="card-title">Current interests</div>
-          <p class="tagline-small">
-            Vassiliev invariants, Gauss diagram formulae, combinatorial one-cocycles in knot moduli spaces, quantum equations for knots.
-          </p>
-          <div class="knot-sketch">
-(trefoil)
- \  / /
-  \/ /
-  /\ \
- /  \_\
-          </div>
-        </div>
+    <section id="papers" class="section-grid" aria-labelledby="papers-heading">
+      <div class="section-label"><h2 id="papers-heading">Papers</h2><p>Publications &amp; preprints</p></div>
+      <div class="section-content">
+        <ol class="paper-list">
+          <li class="paper">
+            <div class="paper-year">2026</div>
+            <div class="paper-content">
+              <h3><a href="https://arxiv.org/abs/2609.29946" target="_blank" rel="noopener">Pairings of combinatorial 1-cocycles with loops in knot spaces</a></h3>
+              <p class="authors">Butian Zhang</p>
+              <p class="publication">Preprint</p>
+              <p class="paper-links"><a href="https://arxiv.org/abs/2609.29946" target="_blank" rel="noopener">arXiv:2609.29946</a><a href="https://arxiv.org/pdf/2609.29946" target="_blank" rel="noopener">PDF</a><a href="https://github.com/ZBT99/Finite-type-combinatorial-1-cocycles" target="_blank" rel="noopener">Code</a></p>
+            </div>
+          </li>
+          <li class="paper">
+            <div class="paper-year">2025</div>
+            <div class="paper-content">
+              <h3><a href="https://arxiv.org/abs/2509.08423" target="_blank" rel="noopener">Quantum equations for knots</a></h3>
+              <p class="authors">Thomas Fiedler and Butian Zhang</p>
+              <p class="publication">Preprint</p>
+              <p class="paper-links"><a href="https://arxiv.org/abs/2509.08423" target="_blank" rel="noopener">arXiv:2509.08423</a><a href="https://arxiv.org/pdf/2509.08423" target="_blank" rel="noopener">PDF</a><a href="https://github.com/ZBT99/Regular-1-cocycle-HOMFLYPT-2cabled" target="_blank" rel="noopener">Code</a></p>
+            </div>
+          </li>
+          <li class="paper">
+            <div class="paper-year">2023</div>
+            <div class="paper-content">
+              <h3><a href="https://doi.org/10.1142/S0218216523500840" target="_blank" rel="noopener">Gauss diagram formulae for Vassiliev invariants from Kauffman polynomial</a></h3>
+              <p class="authors">Butian Zhang</p>
+              <p class="publication"><cite>Journal of Knot Theory and Its Ramifications</cite> 32(12), 2350084.</p>
+              <p class="paper-links"><a href="https://arxiv.org/abs/2306.01591" target="_blank" rel="noopener">arXiv:2306.01591</a><a href="https://arxiv.org/pdf/2306.01591" target="_blank" rel="noopener">PDF</a><a href="https://doi.org/10.1142/S0218216523500840" target="_blank" rel="noopener">Journal</a></p>
+            </div>
+          </li>
+          <li class="paper">
+            <div class="paper-year">2022</div>
+            <div class="paper-content">
+              <h3><a href="https://arxiv.org/abs/2212.03778" target="_blank" rel="noopener">A combinatorial one-cocycle in a moduli space of knots from the Vassiliev invariant of order 3</a></h3>
+              <p class="authors">Baptiste Gros and Butian Zhang</p>
+              <p class="publication">Preprint</p>
+              <p class="paper-links"><a href="https://arxiv.org/abs/2212.03778" target="_blank" rel="noopener">arXiv:2212.03778</a><a href="https://arxiv.org/pdf/2212.03778" target="_blank" rel="noopener">PDF</a></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-        <div class="card">
-          <div class="card-title">News</div>
-          <ul style="list-style:none;padding-left:0;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:4px;">
-            <li><span class="pill">2025</span> Preprint “Quantum equations for knots” (with Thomas Fiedler), arXiv:2509.08423.</li>
-            <li><span class="pill">2022</span> Preprint “A combinatorial one-cocycle...” (with Baptiste Gros), arXiv:2212.03778.</li>
-            <li><span class="pill">2023</span> Paper published in JKTR.</li>
+    <section id="notes" class="section-grid" aria-labelledby="notes-heading">
+      <div class="section-heading-row"><h2 id="notes-heading">Notes</h2><a href="notes/">Notes archive</a></div>
+      <div data-notes-list data-notes-limit="3">
+        <ul class="note-list"><li class="note-item"><h3><a href="notes/files/barbell-diffeomorphisms.pdf" target="_blank" rel="noopener">Barbell diffeomorphisms</a></h3></li><li class="note-item"><h3><a href="notes/files/dehn-surgery-and-kirby-calculus-for-3-manifolds.pdf" target="_blank" rel="noopener">Dehn surgery and Kirby calculus for 3-manifolds</a></h3></li></ul>
+      </div>
+    </section>
+
+    <section id="talks" class="section-grid" aria-labelledby="talks-heading">
+      <div class="section-label"><h2 id="talks-heading">Talks</h2><p>Recent presentations</p></div>
+      <div class="section-content">
+        <ul class="talk-list">
+          <li><time datetime="2026-08">Aug. 2026</time><div><h3>1-Cohomology Classes from the Long Knot Space to the Closed Knot Spaces</h3><p>Moduli and Friends II · Bucharest</p></div></li>
+          <li><time datetime="2026-06">Jun. 2026</time><div><h3>Spaces of embeddings and the discovery of barbell diffeomorphisms</h3><p>Knotted 3-balls in the 4-sphere · Matemale</p></div></li>
+          <li><time datetime="2026-04">Apr. 2026</time><div><h3>Combinatorial 1-Cocycles in the Space of Long Knots</h3><p>Oberwolfach Seminar: Knots and Their Interdisciplinary Applications · MFO</p></div></li>
+          <li><time datetime="2026-04">Apr. 2026</time><div><h3>Quantum Equations for Knots</h3><p>Virtual Seminar on Discrete Mathematics, Xiangtan University · Online</p></div></li>
+          <li><time datetime="2026-02">Feb. 2026</time><div><h3>Combinatorial 1-Cocycles in the Space of Long Knots</h3><p>Moscow-Beijing topology seminar · Online</p></div></li>
+          <li><time datetime="2026-01">Jan. 2026</time><div><h3>Combinatorial 1-Cocycles of Order 4 in the Space of Long Knots</h3><p>Quantum Topology Seminar, University of Illinois Chicago · Online</p></div></li>
+        </ul>
+        <details class="earlier-talks">
+          <summary>Earlier talks (2023–2025)</summary>
+          <ul class="talk-list">
+            <li><time datetime="2025-11">Nov. 2025</time><div><h3>How Do We Distinguish Knots?</h3><p>Séminaire des Doctorants · IMT, Toulouse</p></div></li>
+            <li><time datetime="2025-09">Sep. 2025</time><div><h3>Combinatorial 1-Cocycles in the Space of Long Knots</h3><p>LiT III: Living in Topology · Pisa</p></div></li>
+            <li><time datetime="2025-03">Mar. 2025</time><div><h3>Quid of the Space of (Long) Knots</h3><p>Quid Seminar · IMT, Toulouse</p></div></li>
+            <li><time datetime="2025-02">Feb. 2025</time><div><h3>New Combinatorial One-Cocycles of the Space of Long Knots</h3><p>Winterbraids · IMB, Bordeaux</p></div></li>
+            <li><time datetime="2024-05">May 2024</time><div><h3>Kirby Calculus and 3-Dimensional Surgery Presentations</h3><p>Workshop: Exotic 4-Manifolds · Matemale</p></div></li>
+            <li><time datetime="2023-07">Jul. 2023</time><div><h3>Combinatorial One-Cocycles in a Moduli Space of Knots</h3><p>Graduate Student Geometry and Topology Conference, Harvard University · Online</p></div></li>
+            <li><time datetime="2023-05">May 2023</time><div><h3>Gauss Diagram Formulae for Vassiliev Invariants from the Kauffman Polynomial</h3><p>Quantum Topology Seminar, University of Illinois Chicago · Online</p></div></li>
           </ul>
-        </div>
-      </aside>
+        </details>
+      </div>
+    </section>
+
+    <section id="teaching" class="section-grid" aria-labelledby="teaching-heading">
+      <div class="section-label"><h2 id="teaching-heading">Teaching</h2><p>Université de Toulouse</p></div>
+      <div class="section-content">
+        <dl class="teaching-list">
+          <div><dt>2025–2026</dt><dd>Introduction to Real Analysis (TP); Linear Algebra 1 (TP); Functions and Calculus 1 &amp; 2 (TD).</dd></div>
+          <div><dt>2024–2025</dt><dd>Introduction to Real Analysis (TP); Integration and Numerical Series (TP); Functions and Calculus 1 (TD).</dd></div>
+          <div><dt>2023–2024</dt><dd>Introduction to Real Analysis (TP); Linear Algebra 3 (TD); Advanced Linear Algebra 3 (TD).</dd></div>
+        </dl>
+        <p class="teaching-note">TD: tutorials · TP: practical sessions</p>
+      </div>
+    </section>
+
+    <section id="code" class="section-grid" aria-labelledby="code-heading">
+      <h2 id="code-heading">Code</h2>
+      <div class="section-content code-list">
+        <article><h3><a href="https://github.com/ZBT99/Finite-type-combinatorial-1-cocycles" target="_blank" rel="noopener">Finite-type combinatorial 1-cocycles</a></h3><p>Programs for computing finite-type combinatorial 1-cocycles and their evaluations on loops in knot spaces.</p></article>
+        <article><h3><a href="https://github.com/ZBT99/Regular-1-cocycle-HOMFLYPT-2cabled" target="_blank" rel="noopener">HOMFLYPT-based regular 1-cocycles</a></h3><p>Computations of regular 1-cocycles along push paths for 2-cabled long knots.</p></article>
+      </div>
+    </section>
     </div>
+  </main>
 
-    <main>
-      <section id="research">
-        <h2>Research & Publications</h2>
-        <p class="section-subtitle">Publications and preprints on knot theory, Vassiliev invariants, and quantum invariants.</p>
-
-        <div class="two-col">
-          <div>
-            <h3 style="font-size:15px;margin-bottom:6px;">Publications</h3>
-            <ul class="pub-list">
-              <li>
-                <div class="pub-item-title">Gauss diagram formulae for Vassiliev invariants from Kauffman polynomial.</div>
-                <div class="pub-meta">
-                  Journal of Knot Theory and Its Ramifications, 32(12), 2350084 (2023).<br/>
-                  <a href="https://doi.org/10.1142/S0218216523500840" target="_blank">DOI: 10.1142/S0218216523500840</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 style="font-size:15px;margin-bottom:6px;">Preprints</h3>
-            <ul class="pub-list">
-              <li>
-                <div class="pub-item-title">A combinatorial one-cocycle in a moduli space of knots from the Vassiliev invariant of order 3.</div>
-                <div class="pub-meta">
-                  Joint with Baptiste Gros, preprint (2022).<br/>
-                  <a href="https://arxiv.org/abs/2212.03778" target="_blank">arXiv:2212.03778</a>
-                </div>
-              </li>
-
-              <li>
-                <div class="pub-item-title">Quantum equations for knots.</div>
-                <div class="pub-meta">
-                  Joint with Thomas Fiedler, preprint (2025).<br/>
-                  <a href="https://arxiv.org/abs/2509.08423" target="_blank">arXiv:2509.08423</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="notes">
-        <h2>Notes & Teaching</h2>
-        <p class="section-subtitle">Some notes and expository materials.</p>
-
-        <ul class="notes-list">
-          <li>
-            <div>
-              <strong>Finite-type invariants and Gauss diagram formulae</strong>
-              <div class="note-meta">Draft notes, 2024–.</div>
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>Seminar / Course materials</strong>
-              <div class="note-meta">To be added.</div>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section id="projects">
-        <h2>Code & Projects</h2>
-        <p class="section-subtitle">
-          More projects on <a href="https://github.com/ZBT99" target="_blank">GitHub @ZBT99</a>.
-        </p>
-
-        <ul class="projects-list">
-          <li>
-            <div>
-              <strong>[Project title]</strong>
-              <div class="proj-meta">To be added.</div>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section id="cv">
-        <h2>CV</h2>
-        <p class="section-subtitle">Download my CV (PDF).</p>
-        <p style="font-size:14px;">
-          <a class="btn btn-ghost" href="cv.pdf" target="_blank">Download CV (PDF)</a>
-        </p>
-      </section>
-    </main>
-
-    <footer>
-      © <span id="year"></span> Butian Zhang · Built with GitHub Pages.
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <footer class="site-footer wrap">
+    <p>© 2026 Butian Zhang</p>
+    <p>Updated 8 October 2026</p>
+  </footer>
 </body>
 </html>
-
